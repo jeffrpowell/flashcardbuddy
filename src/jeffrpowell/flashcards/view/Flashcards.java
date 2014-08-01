@@ -24,6 +24,7 @@ public class Flashcards extends javax.swing.JFrame {
     private CardLayout cardLayout;
 	private transient final WindowAdapter persistOnClose;
 	private Deck deckCache;
+	private int runningIndex;
     /**
      * Creates new form Flashcards
      */
@@ -67,6 +68,16 @@ public class Flashcards extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         RunDeckPanel = new javax.swing.JPanel();
         deckSelect = new javax.swing.JComboBox();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        runPromptTxtArea = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        runAnswerTxtArea = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        previousBtn = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        revealButton = new javax.swing.JButton();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        nextBtn = new javax.swing.JButton();
         feedbackLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -179,21 +190,92 @@ public class Flashcards extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane3.setHorizontalScrollBar(null);
+
+        runPromptTxtArea.setEditable(false);
+        runPromptTxtArea.setColumns(20);
+        runPromptTxtArea.setLineWrap(true);
+        runPromptTxtArea.setRows(7);
+        runPromptTxtArea.setTabSize(4);
+        runPromptTxtArea.setWrapStyleWord(true);
+        jScrollPane3.setViewportView(runPromptTxtArea);
+
+        jScrollPane4.setHorizontalScrollBar(null);
+
+        runAnswerTxtArea.setEditable(false);
+        runAnswerTxtArea.setColumns(20);
+        runAnswerTxtArea.setLineWrap(true);
+        runAnswerTxtArea.setRows(7);
+        runAnswerTxtArea.setTabSize(4);
+        runAnswerTxtArea.setWrapStyleWord(true);
+        jScrollPane4.setViewportView(runAnswerTxtArea);
+
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
+
+        previousBtn.setText("Previous");
+        previousBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                previousBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(previousBtn);
+        jPanel1.add(filler1);
+
+        revealButton.setText("Reveal Answer");
+        revealButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                revealButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(revealButton);
+        jPanel1.add(filler2);
+
+        nextBtn.setText("Next");
+        nextBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                nextBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(nextBtn);
+
         javax.swing.GroupLayout RunDeckPanelLayout = new javax.swing.GroupLayout(RunDeckPanel);
         RunDeckPanel.setLayout(RunDeckPanelLayout);
         RunDeckPanelLayout.setHorizontalGroup(
             RunDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RunDeckPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79))
             .addGroup(RunDeckPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(deckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(599, Short.MAX_VALUE))
+                .addGroup(RunDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RunDeckPanelLayout.createSequentialGroup()
+                        .addComponent(deckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(599, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RunDeckPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))))
         );
         RunDeckPanelLayout.setVerticalGroup(
             RunDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RunDeckPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(deckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6))
         );
 
         cardPanel.add(RunDeckPanel, "runDeckPanel");
@@ -222,8 +304,27 @@ public class Flashcards extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_deckSelectItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED){
 			deckCache = controller.runDeckSelectItemChanged(evt);
+			runningIndex = 0;
+			runAnswerTxtArea.setVisible(false);
 		}
     }//GEN-LAST:event_deckSelectItemStateChanged
+
+    private void previousBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_previousBtnActionPerformed
+    {//GEN-HEADEREND:event_previousBtnActionPerformed
+        runningIndex--;
+		runAnswerTxtArea.setVisible(false);
+    }//GEN-LAST:event_previousBtnActionPerformed
+
+    private void nextBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_nextBtnActionPerformed
+    {//GEN-HEADEREND:event_nextBtnActionPerformed
+        runningIndex++;
+		runAnswerTxtArea.setVisible(false);
+    }//GEN-LAST:event_nextBtnActionPerformed
+
+    private void revealButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_revealButtonActionPerformed
+    {//GEN-HEADEREND:event_revealButtonActionPerformed
+        runAnswerTxtArea.setVisible(true);
+    }//GEN-LAST:event_revealButtonActionPerformed
     
     private void addNewFlashcard(){
         controller.addNewFlashcardButtonClicked(new FlashCard(flashcardPromptTxtArea.getText(), flashcardAnswerTxtArea.getText()));
@@ -315,14 +416,24 @@ public class Flashcards extends javax.swing.JFrame {
     private javax.swing.JTextField deckNameTxt;
     private javax.swing.JComboBox deckSelect;
     private javax.swing.JLabel feedbackLbl;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JTextArea flashcardAnswerTxtArea;
     private javax.swing.JTextArea flashcardPromptTxtArea;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JButton nextBtn;
+    private javax.swing.JButton previousBtn;
+    private javax.swing.JButton revealButton;
+    private javax.swing.JTextArea runAnswerTxtArea;
+    private javax.swing.JTextArea runPromptTxtArea;
     private javax.swing.JButton saveNewDeckBtn;
     // End of variables declaration//GEN-END:variables
 }
