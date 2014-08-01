@@ -1,8 +1,9 @@
 package jeffrpowell.flashcards.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Deck {
+public class Deck implements Serializable{
     private List<FlashCard> deck;
     private String name;
 

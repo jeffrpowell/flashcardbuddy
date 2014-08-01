@@ -1,10 +1,11 @@
 package jeffrpowell.flashcards.model;
 
+import java.io.Serializable;
 import javax.swing.Icon;
 
-public class FlashCard {
+public class FlashCard implements Serializable{
 
-    private Icon image;
+    private transient Icon image;
     private String prompt, answer;
 
     public FlashCard(Icon image, String prompt, String answer) {

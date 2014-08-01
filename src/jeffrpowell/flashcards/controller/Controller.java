@@ -42,4 +42,8 @@ public class Controller {
     public void saveNewDeck(String name){
         model.saveNewDeck(name);
     }
+	
+	public void persistBeforeClosing(){
+		model.persistData();
+	}
 }

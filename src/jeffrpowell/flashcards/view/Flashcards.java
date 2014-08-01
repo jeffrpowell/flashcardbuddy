@@ -7,8 +7,10 @@
 package jeffrpowell.flashcards.view;
 
 import java.awt.CardLayout;
-import jeffrpowell.flashcards.controller.Controller;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
+import jeffrpowell.flashcards.controller.Controller;
 import jeffrpowell.flashcards.model.FlashCard;
 
 /**
@@ -18,11 +20,13 @@ import jeffrpowell.flashcards.model.FlashCard;
 public class Flashcards extends javax.swing.JFrame {
     private final Controller controller;
     private CardLayout cardLayout;
+	private final WindowAdapter persistOnClose;
     /**
      * Creates new form Flashcards
      */
     public Flashcards() {
-        controller = new Controller(this);
+		this.controller = new Controller(this);
+		this.persistOnClose = new PersistOnClose();
         initComponents();
         manualInit();
     }
@@ -240,11 +244,21 @@ public class Flashcards extends javax.swing.JFrame {
             @Override
             public void run() {
                 Flashcards F = new Flashcards();
+				F.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				F.addWindowListener(F.persistOnClose);
                 F.pack();
                 F.setVisible(true);
             }
         });
     }
+	
+	private class PersistOnClose extends WindowAdapter{
+		@Override
+		public void windowClosing(WindowEvent e){
+			controller.persistBeforeClosing();
+			System.exit(0);
+		}
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddDeckPanel;
