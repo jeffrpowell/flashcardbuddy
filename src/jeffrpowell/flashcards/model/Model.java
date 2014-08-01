@@ -68,6 +68,29 @@ public class Model {
         decks.add(tempStore.pullOutDeck(name));
     }
 	
+	public List<String> getDeckNames(){
+		List<String> deckNames = new ArrayList<>();
+		for (Deck deck : decks)
+		{
+			deckNames.add(deck.getName());
+		}
+		return deckNames;
+	}
+	
+	public void swapTabs(){
+		tempStore.cleanStorage();
+	}
+	
+	public Deck getDeck(String name){
+		for (Deck deck : decks)
+		{
+			if (deck.getName().equals(name)){
+				return deck;
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * 
 	 * @return null if everything works fine. A string message describing the error otherwise.

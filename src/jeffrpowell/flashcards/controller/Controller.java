@@ -5,6 +5,9 @@
  */
 package jeffrpowell.flashcards.controller;
 
+import java.awt.event.ItemEvent;
+import java.util.List;
+import jeffrpowell.flashcards.model.Deck;
 import jeffrpowell.flashcards.model.FlashCard;
 import jeffrpowell.flashcards.model.Model;
 import jeffrpowell.flashcards.view.Flashcards;
@@ -24,14 +27,17 @@ public class Controller {
     }
     
     public void addButtonClicked(){
+		model.swapTabs();
         view.showNewDeckPanel();
     }
     
     public void editButtonClicked(){
+		model.swapTabs();
         view.showEditDeckPanel();
     }
     
     public void runButtonClicked(){
+		model.swapTabs();
         view.showRunDeckPanel();
     }
     
@@ -45,5 +51,16 @@ public class Controller {
 	
 	public void persistBeforeClosing(){
 		model.persistData();
+	}
+	
+	public List<String> getDeckNames(){
+		return model.getDeckNames();
+	}
+	
+	public Deck runDeckSelectItemChanged(ItemEvent e){
+		if (!e.getItem().toString().equals("Choose a deck...")){
+			return model.getDeck(e.getItem().toString());
+		}
+		return null;
 	}
 }

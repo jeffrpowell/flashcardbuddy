@@ -7,10 +7,12 @@
 package jeffrpowell.flashcards.view;
 
 import java.awt.CardLayout;
+import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
 import jeffrpowell.flashcards.controller.Controller;
+import jeffrpowell.flashcards.model.Deck;
 import jeffrpowell.flashcards.model.FlashCard;
 
 /**
@@ -20,7 +22,8 @@ import jeffrpowell.flashcards.model.FlashCard;
 public class Flashcards extends javax.swing.JFrame {
     private final Controller controller;
     private CardLayout cardLayout;
-	private final WindowAdapter persistOnClose;
+	private transient final WindowAdapter persistOnClose;
+	private Deck deckCache;
     /**
      * Creates new form Flashcards
      */
@@ -44,7 +47,8 @@ public class Flashcards extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         cardPanel = new javax.swing.JPanel();
         IntroPanel = new javax.swing.JPanel();
@@ -62,7 +66,7 @@ public class Flashcards extends javax.swing.JFrame {
         EditDeckPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         RunDeckPanel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        deckSelect = new javax.swing.JComboBox();
         feedbackLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,15 +100,19 @@ public class Flashcards extends javax.swing.JFrame {
         jLabel7.setText("Flashcard Answer");
 
         addFlashcardBtn.setText("Add New Flashcard");
-        addFlashcardBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        addFlashcardBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 addFlashcardBtnActionPerformed(evt);
             }
         });
 
         saveNewDeckBtn.setText("Save New Deck");
-        saveNewDeckBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        saveNewDeckBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 saveNewDeckBtnActionPerformed(evt);
             }
         });
@@ -162,8 +170,31 @@ public class Flashcards extends javax.swing.JFrame {
 
         cardPanel.add(EditDeckPanel, "editDeckPanel");
 
-        jLabel3.setText("I'm running a deck");
-        RunDeckPanel.add(jLabel3);
+        deckSelect.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        deckSelect.addItemListener(new java.awt.event.ItemListener()
+        {
+            public void itemStateChanged(java.awt.event.ItemEvent evt)
+            {
+                deckSelectItemStateChanged(evt);
+            }
+        });
+
+        javax.swing.GroupLayout RunDeckPanelLayout = new javax.swing.GroupLayout(RunDeckPanel);
+        RunDeckPanel.setLayout(RunDeckPanelLayout);
+        RunDeckPanelLayout.setHorizontalGroup(
+            RunDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RunDeckPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(deckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(599, Short.MAX_VALUE))
+        );
+        RunDeckPanelLayout.setVerticalGroup(
+            RunDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RunDeckPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(deckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(337, Short.MAX_VALUE))
+        );
 
         cardPanel.add(RunDeckPanel, "runDeckPanel");
 
@@ -186,11 +217,19 @@ public class Flashcards extends javax.swing.JFrame {
         setFeedbackText(deckNameTxt.getText() + " was successfully saved.");
         deckNameTxt.setText("");
     }//GEN-LAST:event_saveNewDeckBtnActionPerformed
+
+    private void deckSelectItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_deckSelectItemStateChanged
+    {//GEN-HEADEREND:event_deckSelectItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED){
+			deckCache = controller.runDeckSelectItemChanged(evt);
+		}
+    }//GEN-LAST:event_deckSelectItemStateChanged
     
     private void addNewFlashcard(){
         controller.addNewFlashcardButtonClicked(new FlashCard(flashcardPromptTxtArea.getText(), flashcardAnswerTxtArea.getText()));
         flashcardPromptTxtArea.setText("");
         flashcardAnswerTxtArea.setText("");
+		flashcardPromptTxtArea.requestFocusInWindow();
     }
     
     public void showNewDeckPanel(){
@@ -205,6 +244,12 @@ public class Flashcards extends javax.swing.JFrame {
     
     public void showRunDeckPanel(){
         switchCardPanel("runDeckPanel");
+		deckSelect.removeAllItems();
+		deckSelect.addItem("Choose a deck...");
+		for (String deck : controller.getDeckNames())
+		{
+			deckSelect.addItem(deck);
+		}
         setFeedbackText("");
     }
     
@@ -268,11 +313,11 @@ public class Flashcards extends javax.swing.JFrame {
     private javax.swing.JButton addFlashcardBtn;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JTextField deckNameTxt;
+    private javax.swing.JComboBox deckSelect;
     private javax.swing.JLabel feedbackLbl;
     private javax.swing.JTextArea flashcardAnswerTxtArea;
     private javax.swing.JTextArea flashcardPromptTxtArea;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
