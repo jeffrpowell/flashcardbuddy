@@ -25,42 +25,42 @@ public class Controller {
         this.view = view;
         this.model = new Model();
     }
-    
-    public void addButtonClicked(){
-		model.swapTabs();
+
+    public void addButtonClicked() {
+        model.swapTabs();
         view.showNewDeckPanel();
     }
-    
-    public void editButtonClicked(){
-		model.swapTabs();
+
+    public void editButtonClicked() {
+        model.swapTabs();
         view.showEditDeckPanel();
     }
-    
-    public void runButtonClicked(){
-		model.swapTabs();
+
+    public void runButtonClicked() {
+        model.swapTabs();
         view.showRunDeckPanel();
     }
-    
-    public void addNewFlashcardButtonClicked(FlashCard card){
+
+    public void addNewFlashcardButtonClicked(FlashCard card) {
         model.addNewFlashcard(card);
     }
-    
-    public void saveNewDeck(String name){
+
+    public void saveNewDeck(String name) {
         model.saveNewDeck(name);
     }
-	
-	public void persistBeforeClosing(){
-		model.persistData();
-	}
-	
-	public List<String> getDeckNames(){
-		return model.getDeckNames();
-	}
-	
-	public Deck runDeckSelectItemChanged(ItemEvent e){
-		if (!e.getItem().toString().equals("Choose a deck...")){
-			return model.getDeck(e.getItem().toString());
-		}
-		return null;
-	}
+
+    public void persistBeforeClosing() {
+        model.persistData();
+    }
+
+    public List<String> getDeckNames() {
+        return model.getDeckNames();
+    }
+
+    public Deck runDeckSelectItemChanged(ItemEvent e) {
+        if (!e.getItem().toString().equals("Choose a deck...")) {
+            return model.getDeck(e.getItem().toString());
+        }
+        return null;
+    }
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package jeffrpowell.flashcards.view;
 
 import java.awt.CardLayout;
@@ -20,25 +19,27 @@ import jeffrpowell.flashcards.model.FlashCard;
  * @author Jeff
  */
 public class Flashcards extends javax.swing.JFrame {
+
     private final Controller controller;
     private CardLayout cardLayout;
-	private transient final WindowAdapter persistOnClose;
-	private Deck deckCache;
-	private int runningIndex;
+    private transient final WindowAdapter persistOnClose;
+    private Deck deckCache;
+    private int runningIndex;
+
     /**
      * Creates new form Flashcards
      */
     public Flashcards() {
-		this.controller = new Controller(this);
-		this.persistOnClose = new PersistOnClose();
+        this.controller = new Controller(this);
+        this.persistOnClose = new PersistOnClose();
         initComponents();
         manualInit();
     }
-    
-    private void manualInit(){
+
+    private void manualInit() {
         JPanel buttonBar = new ButtonBar(controller);
         getContentPane().add(buttonBar, java.awt.BorderLayout.NORTH);
-        cardLayout = (CardLayout)cardPanel.getLayout();
+        cardLayout = (CardLayout) cardPanel.getLayout();
     }
 
     /**
@@ -302,68 +303,68 @@ public class Flashcards extends javax.swing.JFrame {
 
     private void deckSelectItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_deckSelectItemStateChanged
     {//GEN-HEADEREND:event_deckSelectItemStateChanged
-        if (evt.getStateChange() == ItemEvent.SELECTED){
-			deckCache = controller.runDeckSelectItemChanged(evt);
-			runningIndex = 0;
-			runAnswerTxtArea.setVisible(false);
-		}
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            deckCache = controller.runDeckSelectItemChanged(evt);
+            runningIndex = 0;
+            runAnswerTxtArea.setVisible(false);
+        }
     }//GEN-LAST:event_deckSelectItemStateChanged
 
     private void previousBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_previousBtnActionPerformed
     {//GEN-HEADEREND:event_previousBtnActionPerformed
         runningIndex--;
-		runAnswerTxtArea.setVisible(false);
+        runAnswerTxtArea.setVisible(false);
     }//GEN-LAST:event_previousBtnActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_nextBtnActionPerformed
     {//GEN-HEADEREND:event_nextBtnActionPerformed
         runningIndex++;
-		runAnswerTxtArea.setVisible(false);
+        runAnswerTxtArea.setVisible(false);
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void revealButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_revealButtonActionPerformed
     {//GEN-HEADEREND:event_revealButtonActionPerformed
         runAnswerTxtArea.setVisible(true);
     }//GEN-LAST:event_revealButtonActionPerformed
-    
-    private void addNewFlashcard(){
+
+    private void addNewFlashcard() {
         controller.addNewFlashcardButtonClicked(new FlashCard(flashcardPromptTxtArea.getText(), flashcardAnswerTxtArea.getText()));
         flashcardPromptTxtArea.setText("");
         flashcardAnswerTxtArea.setText("");
-		flashcardPromptTxtArea.requestFocusInWindow();
+        flashcardPromptTxtArea.requestFocusInWindow();
     }
-    
-    public void showNewDeckPanel(){
+
+    public void showNewDeckPanel() {
         switchCardPanel("addDeckPanel");
         setFeedbackText("");
     }
-    
-    public void showEditDeckPanel(){
+
+    public void showEditDeckPanel() {
         switchCardPanel("editDeckPanel");
         setFeedbackText("");
     }
-    
-    public void showRunDeckPanel(){
+
+    public void showRunDeckPanel() {
         switchCardPanel("runDeckPanel");
-		deckSelect.removeAllItems();
-		deckSelect.addItem("Choose a deck...");
-		for (String deck : controller.getDeckNames())
-		{
-			deckSelect.addItem(deck);
-		}
+        deckSelect.removeAllItems();
+        deckSelect.addItem("Choose a deck...");
+        for (String deck : controller.getDeckNames()) {
+            deckSelect.addItem(deck);
+        }
         setFeedbackText("");
     }
-    
-    private void switchCardPanel(String cardName){
+
+    private void switchCardPanel(String cardName) {
         cardLayout.show(cardPanel, cardName);
         revalidate();
         pack();
         repaint();
     }
-    
-    public void setFeedbackText(String text){
+
+    public void setFeedbackText(String text) {
         feedbackLbl.setText(text);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -390,21 +391,22 @@ public class Flashcards extends javax.swing.JFrame {
             @Override
             public void run() {
                 Flashcards F = new Flashcards();
-				F.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-				F.addWindowListener(F.persistOnClose);
+                F.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                F.addWindowListener(F.persistOnClose);
                 F.pack();
                 F.setVisible(true);
             }
         });
     }
-	
-	private class PersistOnClose extends WindowAdapter{
-		@Override
-		public void windowClosing(WindowEvent e){
-			controller.persistBeforeClosing();
-			System.exit(0);
-		}
-	}
+
+    private class PersistOnClose extends WindowAdapter {
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+            controller.persistBeforeClosing();
+            System.exit(0);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddDeckPanel;
