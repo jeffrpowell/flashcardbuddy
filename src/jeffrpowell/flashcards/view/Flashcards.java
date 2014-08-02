@@ -307,6 +307,7 @@ public class Flashcards extends javax.swing.JFrame {
             deckCache = controller.runDeckSelectItemChanged(evt);
             runningIndex = 0;
             runAnswerTxtArea.setVisible(false);
+            loadRunDeckCard();
         }
     }//GEN-LAST:event_deckSelectItemStateChanged
 
@@ -314,12 +315,14 @@ public class Flashcards extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_previousBtnActionPerformed
         runningIndex--;
         runAnswerTxtArea.setVisible(false);
+        loadRunDeckCard();
     }//GEN-LAST:event_previousBtnActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_nextBtnActionPerformed
     {//GEN-HEADEREND:event_nextBtnActionPerformed
         runningIndex++;
         runAnswerTxtArea.setVisible(false);
+        loadRunDeckCard();
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void revealButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_revealButtonActionPerformed
@@ -332,6 +335,31 @@ public class Flashcards extends javax.swing.JFrame {
         flashcardPromptTxtArea.setText("");
         flashcardAnswerTxtArea.setText("");
         flashcardPromptTxtArea.requestFocusInWindow();
+    }
+    
+    private void loadRunDeckCard() {
+        if (deckCache != null){
+            runPromptTxtArea.setText(deckCache.getDeck().get(runningIndex).getPrompt());
+            runAnswerTxtArea.setText(deckCache.getDeck().get(runningIndex).getAnswer());
+            if (runningIndex == deckCache.getDeck().size() - 1){
+                nextBtn.setEnabled(false);
+            }
+            else{
+                nextBtn.setEnabled(true);
+            }
+            if (runningIndex == 0){
+                previousBtn.setEnabled(false);
+            }
+            else{
+                previousBtn.setEnabled(true);
+            }
+        }
+        else{
+            runPromptTxtArea.setText("");
+            runAnswerTxtArea.setText("");
+            previousBtn.setEnabled(false);
+            nextBtn.setEnabled(false);
+        }
     }
 
     public void showNewDeckPanel() {
