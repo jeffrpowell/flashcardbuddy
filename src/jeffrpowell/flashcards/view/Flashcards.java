@@ -9,6 +9,7 @@ import java.awt.CardLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Collections;
 import javax.swing.*;
 import jeffrpowell.flashcards.controller.Controller;
 import jeffrpowell.flashcards.model.Deck;
@@ -49,8 +50,7 @@ public class Flashcards extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         cardPanel = new javax.swing.JPanel();
         IntroPanel = new javax.swing.JPanel();
@@ -76,6 +76,8 @@ public class Flashcards extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         previousBtn = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        shuffleBtn = new javax.swing.JButton();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         revealButton = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         nextBtn = new javax.swing.JButton();
@@ -112,19 +114,15 @@ public class Flashcards extends javax.swing.JFrame {
         jLabel7.setText("Flashcard Answer");
 
         addFlashcardBtn.setText("Add New Flashcard");
-        addFlashcardBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        addFlashcardBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addFlashcardBtnActionPerformed(evt);
             }
         });
 
         saveNewDeckBtn.setText("Save New Deck");
-        saveNewDeckBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        saveNewDeckBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveNewDeckBtnActionPerformed(evt);
             }
         });
@@ -183,10 +181,8 @@ public class Flashcards extends javax.swing.JFrame {
         cardPanel.add(EditDeckPanel, "editDeckPanel");
 
         deckSelect.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        deckSelect.addItemListener(new java.awt.event.ItemListener()
-        {
-            public void itemStateChanged(java.awt.event.ItemEvent evt)
-            {
+        deckSelect.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 deckSelectItemStateChanged(evt);
             }
         });
@@ -214,21 +210,26 @@ public class Flashcards extends javax.swing.JFrame {
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
         previousBtn.setText("Previous");
-        previousBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        previousBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 previousBtnActionPerformed(evt);
             }
         });
         jPanel1.add(previousBtn);
         jPanel1.add(filler1);
 
+        shuffleBtn.setText("Shuffle deck");
+        shuffleBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shuffleBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(shuffleBtn);
+        jPanel1.add(filler3);
+
         revealButton.setText("Reveal Answer");
-        revealButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        revealButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 revealButtonActionPerformed(evt);
             }
         });
@@ -236,10 +237,8 @@ public class Flashcards extends javax.swing.JFrame {
         jPanel1.add(filler2);
 
         nextBtn.setText("Next");
-        nextBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        nextBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextBtnActionPerformed(evt);
             }
         });
@@ -256,14 +255,14 @@ public class Flashcards extends javax.swing.JFrame {
             .addGroup(RunDeckPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(RunDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RunDeckPanelLayout.createSequentialGroup()
-                        .addComponent(deckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(599, Short.MAX_VALUE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RunDeckPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 106, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79))))
+                        .addGap(79, 79, 79))
+                    .addGroup(RunDeckPanelLayout.createSequentialGroup()
+                        .addComponent(deckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         RunDeckPanelLayout.setVerticalGroup(
             RunDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,6 +328,13 @@ public class Flashcards extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_revealButtonActionPerformed
         runAnswerTxtArea.setVisible(true);
     }//GEN-LAST:event_revealButtonActionPerformed
+
+    private void shuffleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shuffleBtnActionPerformed
+        Collections.shuffle(deckCache.getDeck());
+        runningIndex = 0;
+        runAnswerTxtArea.setVisible(false);
+        loadRunDeckCard();
+    }//GEN-LAST:event_shuffleBtnActionPerformed
 
     private void addNewFlashcard() {
         controller.addNewFlashcardButtonClicked(new FlashCard(flashcardPromptTxtArea.getText(), flashcardAnswerTxtArea.getText()));
@@ -448,6 +454,7 @@ public class Flashcards extends javax.swing.JFrame {
     private javax.swing.JLabel feedbackLbl;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
     private javax.swing.JTextArea flashcardAnswerTxtArea;
     private javax.swing.JTextArea flashcardPromptTxtArea;
     private javax.swing.JLabel jLabel2;
@@ -465,5 +472,6 @@ public class Flashcards extends javax.swing.JFrame {
     private javax.swing.JTextArea runAnswerTxtArea;
     private javax.swing.JTextArea runPromptTxtArea;
     private javax.swing.JButton saveNewDeckBtn;
+    private javax.swing.JButton shuffleBtn;
     // End of variables declaration//GEN-END:variables
 }
