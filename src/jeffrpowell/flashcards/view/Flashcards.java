@@ -66,6 +66,16 @@ public class Flashcards extends javax.swing.JFrame {
         addFlashcardBtn = new javax.swing.JButton();
         saveNewDeckBtn = new javax.swing.JButton();
         EditDeckPanel = new javax.swing.JPanel();
+        editDeckSelect = new javax.swing.JComboBox();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        editPromptTxtArea = new javax.swing.JTextArea();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        editAnswerTxtArea = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        editPreviousBtn = new javax.swing.JButton();
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        editNextBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         RunDeckPanel = new javax.swing.JPanel();
         deckSelect = new javax.swing.JComboBox();
@@ -175,8 +185,97 @@ public class Flashcards extends javax.swing.JFrame {
 
         cardPanel.add(AddDeckPanel, "addDeckPanel");
 
-        jLabel2.setText("I'm editing a deck");
-        EditDeckPanel.add(jLabel2);
+        editDeckSelect.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        editDeckSelect.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                editDeckSelectItemStateChanged(evt);
+            }
+        });
+
+        jScrollPane5.setHorizontalScrollBar(null);
+
+        editPromptTxtArea.setEditable(false);
+        editPromptTxtArea.setColumns(20);
+        editPromptTxtArea.setLineWrap(true);
+        editPromptTxtArea.setRows(7);
+        editPromptTxtArea.setTabSize(4);
+        editPromptTxtArea.setWrapStyleWord(true);
+        jScrollPane5.setViewportView(editPromptTxtArea);
+
+        jScrollPane6.setHorizontalScrollBar(null);
+
+        editAnswerTxtArea.setEditable(false);
+        editAnswerTxtArea.setColumns(20);
+        editAnswerTxtArea.setLineWrap(true);
+        editAnswerTxtArea.setRows(7);
+        editAnswerTxtArea.setTabSize(4);
+        editAnswerTxtArea.setWrapStyleWord(true);
+        jScrollPane6.setViewportView(editAnswerTxtArea);
+
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
+
+        editPreviousBtn.setText("Previous");
+        editPreviousBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editPreviousBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(editPreviousBtn);
+        jPanel2.add(filler4);
+
+        editNextBtn.setText("Next");
+        editNextBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editNextBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(editNextBtn);
+
+        jLabel1.setText("Flashcard Prompt: ");
+
+        jLabel2.setText("Flashcard Answer: ");
+
+        javax.swing.GroupLayout EditDeckPanelLayout = new javax.swing.GroupLayout(EditDeckPanel);
+        EditDeckPanel.setLayout(EditDeckPanelLayout);
+        EditDeckPanelLayout.setHorizontalGroup(
+            EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditDeckPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EditDeckPanelLayout.createSequentialGroup()
+                        .addComponent(editDeckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(EditDeckPanelLayout.createSequentialGroup()
+                        .addGroup(EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(EditDeckPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(EditDeckPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))))
+                        .addGap(0, 309, Short.MAX_VALUE))))
+        );
+        EditDeckPanelLayout.setVerticalGroup(
+            EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditDeckPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(editDeckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
 
         cardPanel.add(EditDeckPanel, "editDeckPanel");
 
@@ -336,6 +435,18 @@ public class Flashcards extends javax.swing.JFrame {
         loadRunDeckCard();
     }//GEN-LAST:event_shuffleBtnActionPerformed
 
+    private void editDeckSelectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_editDeckSelectItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editDeckSelectItemStateChanged
+
+    private void editPreviousBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPreviousBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editPreviousBtnActionPerformed
+
+    private void editNextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNextBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editNextBtnActionPerformed
+
     private void addNewFlashcard() {
         controller.addNewFlashcardButtonClicked(new FlashCard(flashcardPromptTxtArea.getText(), flashcardAnswerTxtArea.getText()));
         flashcardPromptTxtArea.setText("");
@@ -451,21 +562,31 @@ public class Flashcards extends javax.swing.JFrame {
     private javax.swing.JPanel cardPanel;
     private javax.swing.JTextField deckNameTxt;
     private javax.swing.JComboBox deckSelect;
+    private javax.swing.JTextArea editAnswerTxtArea;
+    private javax.swing.JComboBox editDeckSelect;
+    private javax.swing.JButton editNextBtn;
+    private javax.swing.JButton editPreviousBtn;
+    private javax.swing.JTextArea editPromptTxtArea;
     private javax.swing.JLabel feedbackLbl;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
     private javax.swing.JTextArea flashcardAnswerTxtArea;
     private javax.swing.JTextArea flashcardPromptTxtArea;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JButton nextBtn;
     private javax.swing.JButton previousBtn;
     private javax.swing.JButton revealButton;
