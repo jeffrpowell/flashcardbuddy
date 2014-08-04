@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jeffrpowell.flashcards.view;
 
 import java.awt.CardLayout;
@@ -15,10 +10,6 @@ import jeffrpowell.flashcards.controller.Controller;
 import jeffrpowell.flashcards.model.Deck;
 import jeffrpowell.flashcards.model.FlashCard;
 
-/**
- *
- * @author Jeff
- */
 public class Flashcards extends javax.swing.JFrame {
 
     private final Controller controller;
@@ -50,7 +41,8 @@ public class Flashcards extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         cardPanel = new javax.swing.JPanel();
         IntroPanel = new javax.swing.JPanel();
@@ -95,11 +87,17 @@ public class Flashcards extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Flashcard Buddy");
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setPreferredSize(new java.awt.Dimension(700, 500));
 
         cardPanel.setLayout(new java.awt.CardLayout());
         cardPanel.add(IntroPanel, "introPanel");
 
+        AddDeckPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel5.setText("Deck Name");
+        AddDeckPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 14, -1, -1));
+        AddDeckPanel.add(deckNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 11, 170, -1));
 
         jScrollPane1.setHorizontalScrollBar(null);
 
@@ -110,7 +108,10 @@ public class Flashcards extends javax.swing.JFrame {
         flashcardAnswerTxtArea.setWrapStyleWord(true);
         jScrollPane1.setViewportView(flashcardAnswerTxtArea);
 
+        AddDeckPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 192, 453, -1));
+
         jLabel6.setText("Flashcard Prompt");
+        AddDeckPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 42, -1, -1));
 
         jScrollPane2.setHorizontalScrollBar(null);
 
@@ -121,102 +122,88 @@ public class Flashcards extends javax.swing.JFrame {
         flashcardPromptTxtArea.setWrapStyleWord(true);
         jScrollPane2.setViewportView(flashcardPromptTxtArea);
 
+        AddDeckPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 42, 453, -1));
+
         jLabel7.setText("Flashcard Answer");
+        AddDeckPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 192, -1, -1));
 
         addFlashcardBtn.setText("Add New Flashcard");
-        addFlashcardBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        addFlashcardBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 addFlashcardBtnActionPerformed(evt);
             }
         });
+        AddDeckPanel.add(addFlashcardBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 335, 184, -1));
 
         saveNewDeckBtn.setText("Save New Deck");
-        saveNewDeckBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        saveNewDeckBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 saveNewDeckBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout AddDeckPanelLayout = new javax.swing.GroupLayout(AddDeckPanel);
-        AddDeckPanel.setLayout(AddDeckPanelLayout);
-        AddDeckPanelLayout.setHorizontalGroup(
-            AddDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddDeckPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AddDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddDeckPanelLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel5))
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(AddDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(deckNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(AddDeckPanelLayout.createSequentialGroup()
-                        .addComponent(addFlashcardBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saveNewDeckBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
-        AddDeckPanelLayout.setVerticalGroup(
-            AddDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddDeckPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AddDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(deckNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(AddDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(AddDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(AddDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addFlashcardBtn)
-                    .addComponent(saveNewDeckBtn))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        AddDeckPanel.add(saveNewDeckBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 335, 201, -1));
 
         cardPanel.add(AddDeckPanel, "addDeckPanel");
 
+        EditDeckPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         editDeckSelect.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        editDeckSelect.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+        editDeckSelect.addItemListener(new java.awt.event.ItemListener()
+        {
+            public void itemStateChanged(java.awt.event.ItemEvent evt)
+            {
                 editDeckSelectItemStateChanged(evt);
             }
         });
+        EditDeckPanel.add(editDeckSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jScrollPane5.setHorizontalScrollBar(null);
 
-        editPromptTxtArea.setEditable(false);
         editPromptTxtArea.setColumns(20);
         editPromptTxtArea.setLineWrap(true);
         editPromptTxtArea.setRows(7);
         editPromptTxtArea.setTabSize(4);
         editPromptTxtArea.setWrapStyleWord(true);
+        editPromptTxtArea.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
+                editPromptTxtAreaFocusLost(evt);
+            }
+        });
         jScrollPane5.setViewportView(editPromptTxtArea);
+
+        EditDeckPanel.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 79, 453, -1));
 
         jScrollPane6.setHorizontalScrollBar(null);
 
-        editAnswerTxtArea.setEditable(false);
         editAnswerTxtArea.setColumns(20);
         editAnswerTxtArea.setLineWrap(true);
         editAnswerTxtArea.setRows(7);
         editAnswerTxtArea.setTabSize(4);
         editAnswerTxtArea.setWrapStyleWord(true);
+        editAnswerTxtArea.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
+                editAnswerTxtAreaFocusLost(evt);
+            }
+        });
         jScrollPane6.setViewportView(editAnswerTxtArea);
+
+        EditDeckPanel.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 217, 451, -1));
 
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
 
         editPreviousBtn.setText("Previous");
-        editPreviousBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        editPreviousBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 editPreviousBtnActionPerformed(evt);
             }
         });
@@ -224,67 +211,36 @@ public class Flashcards extends javax.swing.JFrame {
         jPanel2.add(filler4);
 
         editNextBtn.setText("Next");
-        editNextBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        editNextBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 editNextBtnActionPerformed(evt);
             }
         });
         jPanel2.add(editNextBtn);
 
+        EditDeckPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 45, 453, -1));
+
         jLabel1.setText("Flashcard Prompt: ");
+        EditDeckPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 79, -1, -1));
 
         jLabel2.setText("Flashcard Answer: ");
-
-        javax.swing.GroupLayout EditDeckPanelLayout = new javax.swing.GroupLayout(EditDeckPanel);
-        EditDeckPanel.setLayout(EditDeckPanelLayout);
-        EditDeckPanelLayout.setHorizontalGroup(
-            EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EditDeckPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EditDeckPanelLayout.createSequentialGroup()
-                        .addComponent(editDeckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(EditDeckPanelLayout.createSequentialGroup()
-                        .addGroup(EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(EditDeckPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(EditDeckPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))))
-                        .addGap(0, 309, Short.MAX_VALUE))))
-        );
-        EditDeckPanelLayout.setVerticalGroup(
-            EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EditDeckPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(editDeckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(EditDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
+        EditDeckPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 217, -1, -1));
 
         cardPanel.add(EditDeckPanel, "editDeckPanel");
 
+        RunDeckPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         deckSelect.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        deckSelect.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+        deckSelect.addItemListener(new java.awt.event.ItemListener()
+        {
+            public void itemStateChanged(java.awt.event.ItemEvent evt)
+            {
                 deckSelectItemStateChanged(evt);
             }
         });
+        RunDeckPanel.add(deckSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jScrollPane3.setHorizontalScrollBar(null);
 
@@ -296,6 +252,8 @@ public class Flashcards extends javax.swing.JFrame {
         runPromptTxtArea.setWrapStyleWord(true);
         jScrollPane3.setViewportView(runPromptTxtArea);
 
+        RunDeckPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 61, 453, -1));
+
         jScrollPane4.setHorizontalScrollBar(null);
 
         runAnswerTxtArea.setEditable(false);
@@ -306,11 +264,15 @@ public class Flashcards extends javax.swing.JFrame {
         runAnswerTxtArea.setWrapStyleWord(true);
         jScrollPane4.setViewportView(runAnswerTxtArea);
 
+        RunDeckPanel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 238, 453, -1));
+
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
         previousBtn.setText("Previous");
-        previousBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        previousBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 previousBtnActionPerformed(evt);
             }
         });
@@ -318,8 +280,10 @@ public class Flashcards extends javax.swing.JFrame {
         jPanel1.add(filler1);
 
         shuffleBtn.setText("Shuffle deck");
-        shuffleBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        shuffleBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 shuffleBtnActionPerformed(evt);
             }
         });
@@ -327,8 +291,10 @@ public class Flashcards extends javax.swing.JFrame {
         jPanel1.add(filler3);
 
         revealButton.setText("Reveal Answer");
-        revealButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        revealButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 revealButtonActionPerformed(evt);
             }
         });
@@ -336,46 +302,16 @@ public class Flashcards extends javax.swing.JFrame {
         jPanel1.add(filler2);
 
         nextBtn.setText("Next");
-        nextBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        nextBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 nextBtnActionPerformed(evt);
             }
         });
         jPanel1.add(nextBtn);
 
-        javax.swing.GroupLayout RunDeckPanelLayout = new javax.swing.GroupLayout(RunDeckPanel);
-        RunDeckPanel.setLayout(RunDeckPanelLayout);
-        RunDeckPanelLayout.setHorizontalGroup(
-            RunDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RunDeckPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
-            .addGroup(RunDeckPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(RunDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RunDeckPanelLayout.createSequentialGroup()
-                        .addGap(0, 106, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79))
-                    .addGroup(RunDeckPanelLayout.createSequentialGroup()
-                        .addComponent(deckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        RunDeckPanelLayout.setVerticalGroup(
-            RunDeckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RunDeckPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(deckSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6))
-        );
+        RunDeckPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 204, 638, -1));
 
         cardPanel.add(RunDeckPanel, "runDeckPanel");
 
@@ -393,16 +329,21 @@ public class Flashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_addFlashcardBtnActionPerformed
 
     private void saveNewDeckBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveNewDeckBtnActionPerformed
-        addNewFlashcard();
-        controller.saveNewDeck(deckNameTxt.getText());
-        setFeedbackText(deckNameTxt.getText() + " was successfully saved.");
-        deckNameTxt.setText("");
+        try{
+			addNewFlashcard();
+			controller.saveNewDeck(deckNameTxt.getText());
+			setFeedbackText(deckNameTxt.getText() + " was successfully saved.");
+			deckNameTxt.setText("");
+		}
+		catch (IllegalArgumentException e){
+			setFeedbackText(e.getMessage());
+		}
     }//GEN-LAST:event_saveNewDeckBtnActionPerformed
 
     private void deckSelectItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_deckSelectItemStateChanged
     {//GEN-HEADEREND:event_deckSelectItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            deckCache = controller.runDeckSelectItemChanged(evt);
+            deckCache = controller.deckSelectItemChanged(evt);
             runningIndex = 0;
             runAnswerTxtArea.setVisible(false);
             loadRunDeckCard();
@@ -436,16 +377,33 @@ public class Flashcards extends javax.swing.JFrame {
     }//GEN-LAST:event_shuffleBtnActionPerformed
 
     private void editDeckSelectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_editDeckSelectItemStateChanged
-        // TODO add your handling code here:
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            deckCache = controller.deckSelectItemChanged(evt);
+            runningIndex = 0;
+            runAnswerTxtArea.setVisible(false);
+            loadEditDeckCard();
+        }
     }//GEN-LAST:event_editDeckSelectItemStateChanged
 
     private void editPreviousBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPreviousBtnActionPerformed
-        // TODO add your handling code here:
+        runningIndex--;
+        loadEditDeckCard();
     }//GEN-LAST:event_editPreviousBtnActionPerformed
 
     private void editNextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNextBtnActionPerformed
-        // TODO add your handling code here:
+        runningIndex++;
+        loadEditDeckCard();
     }//GEN-LAST:event_editNextBtnActionPerformed
+
+    private void editPromptTxtAreaFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_editPromptTxtAreaFocusLost
+    {//GEN-HEADEREND:event_editPromptTxtAreaFocusLost
+        controller.editPromptFocusLost(deckCache, runningIndex, editPromptTxtArea.getText());
+    }//GEN-LAST:event_editPromptTxtAreaFocusLost
+
+    private void editAnswerTxtAreaFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_editAnswerTxtAreaFocusLost
+    {//GEN-HEADEREND:event_editAnswerTxtAreaFocusLost
+        controller.editAnswerFocusLost(deckCache, runningIndex, editAnswerTxtArea.getText());
+    }//GEN-LAST:event_editAnswerTxtAreaFocusLost
 
     private void addNewFlashcard() {
         controller.addNewFlashcardButtonClicked(new FlashCard(flashcardPromptTxtArea.getText(), flashcardAnswerTxtArea.getText()));
@@ -455,29 +413,45 @@ public class Flashcards extends javax.swing.JFrame {
     }
     
     private void loadRunDeckCard() {
-        if (deckCache != null){
-            runPromptTxtArea.setText(deckCache.getDeck().get(runningIndex).getPrompt());
-            runAnswerTxtArea.setText(deckCache.getDeck().get(runningIndex).getAnswer());
+		loadDeckCard(runPromptTxtArea, runAnswerTxtArea, previousBtn, nextBtn);
+    }
+	
+	private void loadEditDeckCard() {
+		loadDeckCard(editPromptTxtArea, editAnswerTxtArea, editPreviousBtn, editNextBtn);
+	}
+	
+	private void loadDeckCard(JTextArea prompt, JTextArea answer, JButton prev, JButton next) {
+		if (deckCache != null){
+            prompt.setText(deckCache.getDeck().get(runningIndex).getPrompt());
+            answer.setText(deckCache.getDeck().get(runningIndex).getAnswer());
             if (runningIndex == deckCache.getDeck().size() - 1){
-                nextBtn.setEnabled(false);
+                next.setEnabled(false);
             }
             else{
-                nextBtn.setEnabled(true);
+                next.setEnabled(true);
             }
             if (runningIndex == 0){
-                previousBtn.setEnabled(false);
+                prev.setEnabled(false);
             }
             else{
-                previousBtn.setEnabled(true);
+                prev.setEnabled(true);
             }
         }
         else{
-            runPromptTxtArea.setText("");
-            runAnswerTxtArea.setText("");
-            previousBtn.setEnabled(false);
-            nextBtn.setEnabled(false);
+            prompt.setText("");
+            answer.setText("");
+            prev.setEnabled(false);
+            next.setEnabled(false);
         }
-    }
+	}
+	
+	public void loadDeckSelect(JComboBox deckCombo){
+		deckCombo.removeAllItems();
+        deckCombo.addItem("Choose a deck...");
+        for (String deck : controller.getDeckNames()) {
+            deckCombo.addItem(deck);
+        }
+	}
 
     public void showNewDeckPanel() {
         switchCardPanel("addDeckPanel");
@@ -486,24 +460,18 @@ public class Flashcards extends javax.swing.JFrame {
 
     public void showEditDeckPanel() {
         switchCardPanel("editDeckPanel");
-        setFeedbackText("");
+		loadDeckSelect(editDeckSelect);
+        setFeedbackText("Your changes are automatically being saved.");
     }
 
     public void showRunDeckPanel() {
         switchCardPanel("runDeckPanel");
-        deckSelect.removeAllItems();
-        deckSelect.addItem("Choose a deck...");
-        for (String deck : controller.getDeckNames()) {
-            deckSelect.addItem(deck);
-        }
+        loadDeckSelect(deckSelect);
         setFeedbackText("");
     }
 
     private void switchCardPanel(String cardName) {
         cardLayout.show(cardPanel, cardName);
-        revalidate();
-        pack();
-        repaint();
     }
 
     public void setFeedbackText(String text) {

@@ -63,8 +63,15 @@ public class Model {
         tempStore.addNewFlashcard(card);
     }
 
-    public void saveNewDeck(String name) {
-        decks.add(tempStore.pullOutDeck(name));
+    public void saveNewDeck(String name) throws IllegalArgumentException {
+        for (Deck deck : decks)
+		{
+			if (deck.getName().equals(name)){
+				throw new IllegalArgumentException("There already exists a deck named " + name
+												   + ". Please choose a different name.");
+			}
+		}
+		decks.add(tempStore.pullOutDeck(name));
     }
 
     public List<String> getDeckNames() {
@@ -87,7 +94,15 @@ public class Model {
         }
         return null;
     }
+	
+	public void alterFlashcardPrompt(Deck loadedDeck, int index, String text){
+		decks.get(decks.indexOf(loadedDeck)).getDeck().get(index).setPrompt(text);
+	}
 
+	public void alterFlashcardAnswer(Deck loadedDeck, int index, String text){
+		decks.get(decks.indexOf(loadedDeck)).getDeck().get(index).setAnswer(text);
+	}
+	
     /**
      *
      * @return null if everything works fine. A string message describing the

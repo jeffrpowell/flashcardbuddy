@@ -45,7 +45,7 @@ public class Controller {
         model.addNewFlashcard(card);
     }
 
-    public void saveNewDeck(String name) {
+    public void saveNewDeck(String name) throws IllegalArgumentException{
         model.saveNewDeck(name);
     }
 
@@ -57,10 +57,20 @@ public class Controller {
         return model.getDeckNames();
     }
 
-    public Deck runDeckSelectItemChanged(ItemEvent e) {
+    public Deck deckSelectItemChanged(ItemEvent e) {
         if (!e.getItem().toString().equals("Choose a deck...")) {
             return model.getDeck(e.getItem().toString());
         }
         return null;
     }
+	
+	public void editPromptFocusLost(Deck loadedDeck, int index, String text){
+		if (loadedDeck != null)
+			model.alterFlashcardPrompt(loadedDeck, index, text);
+	}
+	
+	public void editAnswerFocusLost(Deck loadedDeck, int index, String text){
+		if (loadedDeck != null)
+			model.alterFlashcardAnswer(loadedDeck, index, text);
+	}
 }
